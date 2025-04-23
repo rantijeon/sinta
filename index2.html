@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Peminjaman</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    form, table {
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #000;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Form Peminjaman</h2>
+  <form id="formPeminjaman">
+    <label>ID: <input type="text" id="id" required></label><br><br>
+    <label>Nama: <input type="text" id="nama" required></label><br><br>
+    <label>NIM: <input type="text" id="nim" required></label><br><br>
+    <label>Tanggal Peminjaman: <input type="date" id="tglPinjam" required></label><br><br>
+    <label>Tanggal Pengembalian: <input type="date" id="tglKembali" required></label><br><br>
+    <label>Prodi: <input type="text" id="prodi" required></label><br><br>
+    <label>Keperluan: <input type="text" id="keperluan" required></label><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h2>Data Peminjaman</h2>
+  <table id="tabelData">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>NIM</th>
+        <th>Tanggal Peminjaman</th>
+        <th>Tanggal Pengembalian</th>
+        <th>Prodi</th>
+        <th>Keperluan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data akan ditambahkan di sini -->
+    </tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById("formPeminjaman");
+    const tabel = document.getElementById("tabelData").getElementsByTagName("tbody")[0];
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const id = document.getElementById("id").value;
+      const nama = document.getElementById("nama").value;
+      const nim = document.getElementById("nim").value;
+      const tglPinjam = document.getElementById("tglPinjam").value;
+      const tglKembali = document.getElementById("tglKembali").value;
+      const prodi = document.getElementById("prodi").value;
+      const keperluan = document.getElementById("keperluan").value;
+
+      const row = tabel.insertRow();
+      row.innerHTML = `
+        <td>${id}</td>
+        <td>${nama}</td>
+        <td>${nim}</td>
+        <td>${tglPinjam}</td>
+        <td>${tglKembali}</td>
+        <td>${prodi}</td>
+        <td>${keperluan}</td>
+      `;
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
